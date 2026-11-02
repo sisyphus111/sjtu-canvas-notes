@@ -1,0 +1,3 @@
+[submodule "third_party/sjtu-canvas-assistant"]
+	path = third_party/sjtu-canvas-assistant
+	url = https://github.com/Aspirin0000/sjtu-canvas-assistant.git

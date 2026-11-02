@@ -1,0 +1,21 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local credentials; keep only the empty configuration template.
+.env
+.env.*
+!.env.example
+
+# Private local sessions and downloaded course artifacts.
+.auth/
+data/
+study_materials/
+
+# Generated media can be very large.
+*.mp4
+*.m4a
+*.webm
