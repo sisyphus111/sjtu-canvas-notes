@@ -1,9 +1,9 @@
 ---
-name: sjtu-canvas
+name: sjtu-canvas-notes
 description: 根据课程名查找 SJTU Canvas 课程、获取课件和课堂字幕，再按现有写作规则整理为从零可读的中文学习讲义。通过附带的 sjtu-canvas-assistant 获取资源；也支持直接使用本地材料。适用于整门课学习、补课、逐讲笔记和课程复习。
 ---
 
-# SJTU Canvas 课程讲义
+# SJTU Canvas Notes
 
 把课程原始材料转化为可以独立学习的讲义。资源获取使用
 `third_party/sjtu-canvas-assistant/`，讲义写作使用

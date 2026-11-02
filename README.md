@@ -1,6 +1,6 @@
-# SJTU Canvas 学习讲义 Skill
+# SJTU Canvas Notes
 
-从 SJTU Canvas 课件、课堂字幕和课件图片生成可以独立学习的中文讲义。
+面向上海交大的 AI Agent Skill：获取 Canvas 课件与课堂字幕，生成有出处、可独立学习的逐讲笔记。
 核心写作规则来自本仓库积累的 [讲义提示词](references/lecture-notes.md)：
 按概念依赖组织内容，解释术语与机制，保留公式、例题和课堂推理，并检查材料覆盖。
 
@@ -13,12 +13,12 @@
 
 让支持本地文件和命令执行的 agent 读取根目录 [SKILL.md](SKILL.md)，例如：
 
-> 阅读这个仓库的 SKILL.md，用现有课件和课堂字幕整理操作系统第 3 讲。
+> 使用本仓库的 sjtu-canvas-notes skill，用现有课件和课堂字幕整理操作系统第 3 讲。
 > 保留原课件图、公式和课堂例子，写成没有听过课也能学习的中文讲义。
 
 获取资源并整理整门课时，可以直接说：
 
-> 使用本仓库的 sjtu-canvas skill，查找“课程名称”（某学期），获取课件、课堂字幕
+> 使用本仓库的 sjtu-canvas-notes skill，查找“课程名称”（某学期），获取课件、课堂字幕
 > 和 PPT 切片，为整门课生成逐讲中文学习笔记，并整理课程导航和知识总览。
 > 凭证已在本地 .env。不要覆盖已有笔记；材料缺失处请注明。
 
@@ -29,7 +29,7 @@
 和已初始化的 submodule，不要只复制 `SKILL.md`，也不要只下载不含 submodule 的源码 ZIP。
 本仓库不自动修改全局客户端设置。
 
-向客户端安装时，将完整仓库根目录注册或链接为 `sjtu-canvas` skill；
+向客户端安装时，将完整仓库根目录注册或链接为 `sjtu-canvas-notes` skill；
 客户端入口应指向本仓库的 `SKILL.md`，随附的 `references/` 和 `third_party/` 必须可访问。
 
 ## 准备资源获取工具
@@ -37,8 +37,8 @@
 克隆完整 skill（包括固定版本的资源工具）：
 
 ```bash
-git clone --recurse-submodules https://github.com/sisyphus111/sjtu_canvas_learner.git sjtu-canvas
-cd sjtu-canvas
+git clone --recurse-submodules https://github.com/sisyphus111/sjtu-canvas-notes.git
+cd sjtu-canvas-notes
 ```
 
 对于已有 checkout，在仓库根目录执行：
