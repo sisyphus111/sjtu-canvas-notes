@@ -4,7 +4,8 @@
 核心写作规则来自本仓库积累的 [讲义提示词](references/lecture-notes.md)：
 按概念依赖组织内容，解释术语与机制，保留公式、例题和课堂推理，并检查材料覆盖。
 
-资源获取使用 [sjtu-canvas-assistant](https://github.com/Aspirin0000/sjtu-canvas-assistant)，
+资源获取使用 [sjtu-canvas-assistant 适配 fork](https://github.com/sisyphus111/sjtu-canvas-assistant)
+（[原项目](https://github.com/Aspirin0000/sjtu-canvas-assistant)），
 以 Git submodule 固定在 `third_party/sjtu-canvas-assistant/`。
 它通过 Canvas API token 和 sessionless LTI 获取资料。仓库本身是一个 skill，
 资源工具的代码、依赖和 CLI 均由 submodule 提供。
@@ -102,13 +103,16 @@ chmod 600 .env
 | 阶段 | Agent 执行的工作 | 可检查的结果 |
 | --- | --- | --- |
 | 定位课程 | 查询课程名、学期、ID，匹配目标范围 | 已确定的课程与讲次 |
-| 获取资源 | 下载课件、目标讲次字幕及 PPT 切片 | 原文件、非空 SRT、可打开的图片和导出记录 |
+| 获取资源 | 下载课件、目标讲次字幕及 PPT 切片 | 原文件、可用字幕/切片，或明确的不可用状态与缺口 |
 | 对齐素材 | 建立课件页与字幕时间段的对应 | 课程 `sources.md` 中的来源与缺口 |
 | 写逐讲笔记 | 按原 prompt 解释概念、机制、公式、例题并检查覆盖 | `lectures/` 中可独立阅读的讲义 |
 | 汇总课程 | 检查全部范围，整理知识依赖和复习导航 | `index.md`、`summary.md`、剩余缺口 |
 
 整门课任务先验证一讲素材，再继续完成指定范围；进度写入来源记录，方便续做。
 没有字幕时明确标注基于课件；下载成功不等于笔记已经完成。
+新版录播列表会显示可点击状态；灰色节次的底层原因需另行核实。回放中的 PPT 视频
+通道、AI 静态切片与 Canvas 附件分别处理。AI 素材不可用时不生成空 SRT/PDF，
+不把这个状态解释成整门课没有资料。
 
 下列命令用于手工验证和理解资源层。课程 ID 和视频 ID 由查询结果取得：
 
@@ -139,7 +143,7 @@ mkdir -p data/recordings/<course-id>/<video-id>
 | `SKILL.md` | Agent 工作入口 |
 | `references/lecture-notes.md` | 原 prompt 提炼的讲义写作规则和正反例 |
 | `references/resources.md` | 上游 CLI、素材交接与限制 |
-| `third_party/sjtu-canvas-assistant/` | MIT 资源获取工具，原样保留为 submodule |
+| `third_party/sjtu-canvas-assistant/` | MIT 资源工具的新版课堂视频适配 fork，以 submodule 固定 |
 | `study_materials/` | 运行 skill 后生成的课程讲义，不进入 Git |
 | `data/`、`.env`、`.venv/` | 本地素材、凭证与依赖，不进入 Git |
 
@@ -158,7 +162,8 @@ mkdir -p data/recordings/<course-id>/<video-id>
 .venv/bin/python -m pytest third_party/sjtu-canvas-assistant/tests
 ```
 
-真实平台验证需配置有效 token，实际取得一份课件、一讲非空字幕和可打开的切片图片。
+真实平台验证需配置有效 token，检查课件、录播列表、播放元数据及目标讲次的 AI 素材状态。
+字幕或切片存在时验证实际内容；平台未提供时记录 `unavailable`，不要求生成空文件。
 本地帮助和 mock 测试通过不能证明真实平台链路成功。
 
 ## 来源与许可证

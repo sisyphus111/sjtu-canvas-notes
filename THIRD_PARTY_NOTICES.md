@@ -3,12 +3,15 @@
 ## sjtu-canvas-assistant
 
 - Source: https://github.com/Aspirin0000/sjtu-canvas-assistant
+- Integration fork: https://github.com/sisyphus111/sjtu-canvas-assistant
 - Local path: `third_party/sjtu-canvas-assistant/` (Git submodule).
 - Revision: pinned by this repository's gitlink; inspect with `git submodule status`.
 - Copyright: Copyright (c) 2026 Aspirin0000.
 - License: MIT; the original file is retained at
   [third_party/sjtu-canvas-assistant/LICENSE](third_party/sjtu-canvas-assistant/LICENSE).
-- Local modifications: none. The skill invokes the upstream CLI.
+- Modifications in the integration fork: new classroom-video LTI/API support,
+  pagination and playback availability, explicit missing-AI-asset handling, and
+  regression tests. The original MIT license and copyright are retained.
 
 Keep the upstream copyright and permission notice when redistributing the upstream
 software or substantial portions of it, including in packages that vendor the
